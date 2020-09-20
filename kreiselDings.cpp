@@ -55,8 +55,8 @@ public:
 		for (int i = 1; i < 21; i++)
 		{
 			DrawCircle(scrW, scrH, i * 15, olc::BLACK); //20 Große Kreise zeichnen, 1. mit r=15
-			elem[i-1].x = (sin(elem[i-1].winkel) * (i * 15)) + scrW;
-			elem[i-1].y = (cos(elem[i-1].winkel) * (i * 15)) + scrH;
+			elem[i-1].x = (cos(elem[i-1].winkel) * (i * 15)) + scrW;
+			elem[i-1].y = (sin(elem[i-1].winkel) * (i * 15)) + scrH;
 			FillCircle(elem[i-1].x, elem[i-1].y, 3, olc::RED); //Punkte auf den Kreisen zeichnen
 			elem[i-1].winkel += ((double)i/speed) * fElapsedTime; //Den Winkel FPS-unabhängig berechnen - 10 = speed
 		}
