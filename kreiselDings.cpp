@@ -47,7 +47,7 @@ public:
 			elem[i-1].y = (cos(elem[i-1].winkel) * (i * 15)) + scrH;
 			FillCircle(elem[i-1].x, elem[i-1].y, 3, olc::RED); //Punkte auf den Kreisen zeichnen
 			elem[i-1].winkel = elem[i-1].winkel + 0.01 + ((double)i/10000);
-			//^ Hier den Winkel verändern, wenn die FPS zu hoch und die Drehung zu schnell ist
+			//^ Hier den Winkel verändern, wenn die FPS zu hoch sind und somit die Drehung zu schnell ist
 			//FPS-Unterschiede sind bei der jeweiligen Kompilierart sowie auf verschiedenen Systemen zu erwarten
 		}
 
