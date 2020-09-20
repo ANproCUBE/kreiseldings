@@ -2,6 +2,15 @@
 //Orig: https://pr0gramm.com/top/4140917
 //Auch noch: https://pr0gramm.com/new/3282451
 
+/*
+DANK GEHT RAUS AN Lett1 & cxii
+1A Ehrenmänner/innen!
+
+Fix FPS-dependency:
+angle += speed * deltaTime
+deltaTime is the time between the previous frame and the current one
+*/
+
 #define OLC_PGE_APPLICATION
 #include "engine.h"
 
@@ -46,9 +55,7 @@ public:
 			elem[i-1].x = (sin(elem[i-1].winkel) * (i * 15)) + scrW;
 			elem[i-1].y = (cos(elem[i-1].winkel) * (i * 15)) + scrH;
 			FillCircle(elem[i-1].x, elem[i-1].y, 3, olc::RED); //Punkte auf den Kreisen zeichnen
-			elem[i-1].winkel = elem[i-1].winkel + 0.01 + ((double)i/10000);
-			//^ Hier den Winkel verändern, wenn die FPS zu hoch sind und somit die Drehung zu schnell ist
-			//FPS-Unterschiede sind bei der jeweiligen Kompilierart sowie auf verschiedenen Systemen zu erwarten
+			elem[i-1].winkel += ((double)i/10) * fElapsedTime; //Den Winkel FPS-unabhängig berechnen - 10 = speed
 		}
 
 		for (int i = 0; i < 19; i++) //19 Linien zwischen den Punkten zeichnen
