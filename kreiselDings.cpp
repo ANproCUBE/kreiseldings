@@ -54,7 +54,7 @@ public:
 
 		for (int i = 1; i < 21; i++)
 		{
-			DrawCircle(scrW, scrH, i * 15, olc::BLACK); //20 Große Kreise zeichnen, 1. mit r=15
+			DrawCircle(scrW, scrH, i * 15, olc::BLACK); //Große Kreise zeichnen, 1. mit r=15
 			elem[i-1].x = (cos(elem[i-1].winkel) * (i * 15)) + scrW;
 			elem[i-1].y = (sin(elem[i-1].winkel) * (i * 15)) + scrH;
 			FillCircle(elem[i-1].x, elem[i-1].y, 3, olc::RED); //Punkte auf den Kreisen zeichnen
@@ -62,8 +62,12 @@ public:
 		}
 		
 		for (int i = 0; i < 19; i++) //19 Linien zwischen den Punkten zeichnen
-		{
 			DrawLine(elem[i].x, elem[i].y, elem[i+1].x, elem[i+1].y, olc::RED);
+
+		if (1)
+		{
+			DrawLine(scrW - 20 * 15, scrH, scrW + 20 * 15, scrH, olc::BLACK); //Crosshair horizontal
+			DrawLine(scrW, scrH - 20 * 15, scrW, scrH + 20 * 15, olc::BLACK); //Crosshair vertikal
 		}
 
 		if (GetKey(olc::Key::LEFT).bHeld)
@@ -72,6 +76,8 @@ public:
 			speed += 0.01;
 
 		DrawString(0, 0, "Speed: " + std::to_string(speed), olc::BLACK);
+		DrawString(0, 10, "01. Winkel: " + std::to_string((elem[0].winkel*360)/(2*3.14159)) + "Grad", olc::BLACK);
+		DrawString(0, 20, "20. Winkel: " + std::to_string((elem[19].winkel*360)/(2*3.14159)) + "Grad", olc::BLACK);
 		return true;
 	}
 };
@@ -79,7 +85,7 @@ public:
 int main()
 {
 	Example demo;
-	if (demo.Construct(1300, 700, 1, 1))
+	if (demo.Construct(1400, 800, 1, 1))
 		demo.Start();
 
 	return 0;
